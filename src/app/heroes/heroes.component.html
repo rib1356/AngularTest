@@ -1,0 +1,39 @@
+<h2>Heroes?</h2>
+<div>
+    <label>New hero name:
+      <input #heroName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(heroName.value); heroName.value=''">
+      add
+    </button>
+  </div>
+   
+  <ul class="heroes">
+    <li *ngFor="let hero of heroes">
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </a>
+      <button class="delete" title="delete hero"
+        (click)="delete(hero)">x</button>
+    </li>
+  </ul>
+
+
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
+
+<!-- This is not needed anymore as hero detail has be seperated to its own component
+    meaning that it does not need to select from the list and display it in the way below.
+    Instead it will use a 1 way binding and take the selected hero and give it to the hero-detail component -->
+    
+<!-- <div *ngIf="selectedHero">
+
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
+  
+  </div> -->
